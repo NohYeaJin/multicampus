@@ -1,4 +1,5 @@
-package app;
+
+//package app;
 /*
  자료형 (data type)
  - 변수 또는 상수가 차지하는 메모리의 양(byte)과 종류를 의미한다.
@@ -19,7 +20,7 @@ package app;
  	- 인터페이스(interface)
  	- 열거(enum)
  */
-
+/*
 public class DataTypeEX {
 	public static void main(String[] args) {
 		
@@ -70,3 +71,4 @@ public class DataTypeEX {
 	}
 
 }
+*/
