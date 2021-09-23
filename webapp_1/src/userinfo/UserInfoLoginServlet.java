@@ -51,9 +51,9 @@ public class UserInfoLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher rd = request.getRequestDispatcher("login.html");
+		RequestDispatcher rd = request.getRequestDispatcher("loginAssignment.html");
 		rd.forward(request, response);
-		response.sendRedirect("login.html");
+		response.sendRedirect("loginAssignment.html");
 	}
 
 	/**
@@ -64,6 +64,8 @@ public class UserInfoLoginServlet extends HttpServlet {
 		Statement stmt = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		RequestDispatcher rd1 = request.getRequestDispatcher("headerServlet");
+		RequestDispatcher rd2 = request.getRequestDispatcher("/error/LoginFail.html");
 		//String ID = request.getParameter("ID");
 		try {
 			conn = DBAction.getInstance().getConnection();
@@ -73,8 +75,13 @@ public class UserInfoLoginServlet extends HttpServlet {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(request.getParameter("PW").equals(rs.getString("PW"))){
+					UserInfo userinfo = new UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME")).setPw(rs.getString("PW"));
+					response.setContentType("text/html;charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<html><head><title>LoginSuccessFully></title></head>");
 					
 					//ex1
+					/*
 					UserInfo userinfo = new UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME")).setPw(rs.getString("PW"));
 					response.setContentType("text/html;charset=UTF-8");
 					PrintWriter out = response.getWriter();
@@ -82,13 +89,20 @@ public class UserInfoLoginServlet extends HttpServlet {
 					out.println("<body>로그인 성공!<br>");
 					out.println(rs.getString("ID")+"님이 로그인되었습니다");
 					out.println("</body></html>");
-					out.close();
-					
+					*/
 					//ex2
+					
 					HttpSession session = request.getSession();
 					session.setAttribute("userinfo", userinfo);
-					response.sendRedirect("UserInfoListServlet");
+					rd1.include(request, response);
+					out.println("</body></html>");
+					//response.sendRedirect("UserInfoListServlet");
+				}else {
+					rd2.forward(request, response);
 				}
+				
+			}else {
+				rd2.forward(request, response);
 			}
 			//rs = stmt.executeQuery("SELECT * FROM USERINFO WHERE ID='"+id+"'");
 		}catch(Exception e) {

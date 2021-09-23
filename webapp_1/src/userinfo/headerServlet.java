@@ -53,6 +53,7 @@ public class headerServlet extends HttpServlet {
 		//로그인 
 		if(userinfo != null) {
 			out.println(userinfo.getName()+"님 로그인 중입니다.");
+			out.println("session");
 			out.println("<input type = 'button' value='로그아웃'"+" onclick='location.href=\"/webapp_1/UserInfoLogOutServlet\"'>");
 			
 		}else {
