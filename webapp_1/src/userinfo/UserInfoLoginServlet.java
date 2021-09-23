@@ -1,6 +1,11 @@
 package userinfo;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +13,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import db.DBAction;
+import dto.UserInfo;
 
 
 /*
@@ -51,8 +60,40 @@ public class UserInfoLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Connection conn = null;
+		Statement stmt = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//String ID = request.getParameter("ID");
+		try {
+			conn = DBAction.getInstance().getConnection();
+			conn.createStatement();
+			pstmt = conn.prepareStatement("SELECT * FROM USERINFO WHERE ID=?");
+			pstmt.setString(1, request.getParameter("ID"));
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(request.getParameter("PW").equals(rs.getString("PW"))){
+					
+					//ex1
+					UserInfo userinfo = new UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME")).setPw(rs.getString("PW"));
+					response.setContentType("text/html;charset=UTF-8");
+					PrintWriter out = response.getWriter();
+					out.println("<html><head><title>LoginSuccessFully></title></head>");
+					out.println("<body>로그인 성공!<br>");
+					out.println(rs.getString("ID")+"님이 로그인되었습니다");
+					out.println("</body></html>");
+					out.close();
+					
+					//ex2
+					HttpSession session = request.getSession();
+					session.setAttribute("userinfo", userinfo);
+					response.sendRedirect("UserInfoListServlet");
+				}
+			}
+			//rs = stmt.executeQuery("SELECT * FROM USERINFO WHERE ID='"+id+"'");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
