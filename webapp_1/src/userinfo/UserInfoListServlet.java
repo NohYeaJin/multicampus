@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserInfoDao;
 import db.DBAction;
 import dto.UserInfo;
 
@@ -49,6 +50,17 @@ public class UserInfoListServlet extends HttpServlet {
 		// 재귀적이어도 괜찮다, 어차피 init안에 getinstance로 인해 하나밖에 사용하지 않음
 		response.setContentType("text/html; charset = UTF-8");
 		PrintWriter out = response.getWriter();
+		UserInfoDao userinfoDao = new UserInfoDao();
+		List<UserInfo> list = null;
+		try {
+			list = userinfoDao.selectList();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		/*
 		Statement pstmt = null;
 		ResultSet rs = null;
 		ResultSetMetaData rsmd = null;
@@ -63,12 +75,7 @@ public class UserInfoListServlet extends HttpServlet {
 			out.println("<table border = '1'>");
 			while (rs.next()) {
 				out.println("<tr>");
-				/*
-				 * for (int i = 1; i <= cols; i++) { out.println("<td><b>"); if (i < 2) { String
-				 * id = rs.getString(i);
-				 * out.println("<a href='/webapp_1'/UserInfoUpdateServlet?id=" + id + "'>" + id
-				 * + "</a>"); } else { out.println("</b></td>"); } }
-				 */
+				
 				UserInfo user = new UserInfo().setId(rs.getString(1)).setPw(rs.getString(2)).setName(rs.getString(3));
 				users.add(user);
 				out.println("<td><b><a href='/webapp_1/UserInfoUpdateServlet?id=" + user.getId() + "'>" + user.getId()
@@ -99,6 +106,7 @@ public class UserInfoListServlet extends HttpServlet {
 
 			}
 		}
+		*/
 	}
 
 	/**
