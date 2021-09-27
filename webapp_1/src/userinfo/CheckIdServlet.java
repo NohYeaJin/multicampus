@@ -52,12 +52,6 @@ public class CheckIdServlet extends HttpServlet {
 			request.getRequestDispatcher("jspEx/CheckId.jsp").include(request, response);
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(rs!=null)rs.close();
-				if(pstmt !=null)pstmt.close();
-				if(conn != null)conn.close();
-			}catch(SQLException e) {}
 		}
 	}
 

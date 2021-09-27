@@ -8,12 +8,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserInfoDao;
 import dto.UserInfo;
 
 /**
@@ -90,6 +92,18 @@ public class UserInfoAdd extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		RequestDispatcher rd = request.getRequestDispatcher("/jspEx/MemberForm.jsp");
+		rd.include(request, response);
+		try {
+			UserInfoDao userinfoDao = new UserInfoDao();
+			userinfoDao.insert(new UserInfo().setId(request.getParameter("id"))
+					.setName(request.getParameter("name"))
+					.setPw(request.getParameter("pwd")));
+			response.sendRedirect("/error?");
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		/*
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");
@@ -101,6 +115,7 @@ public class UserInfoAdd extends HttpServlet {
 		out.println("</body>");
 		out.println("</html>");
 		out.close();
+		*/
 	}
 
 }

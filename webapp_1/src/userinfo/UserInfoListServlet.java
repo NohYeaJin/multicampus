@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +48,18 @@ public class UserInfoListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		try {
+			UserInfoDao userinfoDao = new UserInfoDao();
+			List<UserInfo> userinfos = userinfoDao.selectList();
+			RequestDispatcher rd = request.getRequestDispatcher("/jspEx/userinfo/UserInfoList.jsp");
+			request.setAttribute("userinfos", userinfos);
+			rd.include(request, response);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		// 재귀적이어도 괜찮다, 어차피 init안에 getinstance로 인해 하나밖에 사용하지 않음
+		/*
 		response.setContentType("text/html; charset = UTF-8");
 		PrintWriter out = response.getWriter();
 		UserInfoDao userinfoDao = new UserInfoDao();
@@ -59,7 +71,7 @@ public class UserInfoListServlet extends HttpServlet {
 		}
 		
 		
-		
+		*/
 		/*
 		Statement pstmt = null;
 		ResultSet rs = null;

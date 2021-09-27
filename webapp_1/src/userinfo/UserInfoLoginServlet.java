@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserInfoDao;
 import db.DBAction;
 import dto.UserInfo;
-
 
 /*
  학습 주제
@@ -33,6 +33,7 @@ import dto.UserInfo;
 /**
  * Servlet implementation class UserInfoLoginServlet
  */
+/*
 @WebServlet("/UserInfoLoginServlet")
 public class UserInfoLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,14 +41,17 @@ public class UserInfoLoginServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
+/*
     public UserInfoLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+*/
+/**
+ * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+ */
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+/*
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -55,58 +59,75 @@ public class UserInfoLoginServlet extends HttpServlet {
 		rd.forward(request, response);
 		response.sendRedirect("loginAssignment.html");
 	}
+*/
+/**
+ * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+ *      response)
+ */
+/*
+ * protected void doPost(HttpServletRequest request, HttpServletResponse
+ * response) throws ServletException, IOException { Connection conn = null;
+ * Statement stmt = null; PreparedStatement pstmt = null; ResultSet rs = null;
+ * RequestDispatcher rd1 = request.getRequestDispatcher("headerServlet");
+ * RequestDispatcher rd2 =
+ * request.getRequestDispatcher("/error/LoginFail.html"); //String ID =
+ * request.getParameter("ID"); try { conn =
+ * DBAction.getInstance().getConnection(); conn.createStatement(); pstmt =
+ * conn.prepareStatement("SELECT * FROM USERINFO WHERE ID=?");
+ * pstmt.setString(1, request.getParameter("ID")); rs = pstmt.executeQuery();
+ * if(rs.next()) { if(request.getParameter("PW").equals(rs.getString("PW"))){
+ * UserInfo userinfo = new
+ * UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME")).setPw(rs.
+ * getString("PW")); response.setContentType("text/html;charset=UTF-8");
+ * PrintWriter out = response.getWriter();
+ * out.println("<html><head><title>LoginSuccessFully></title></head>");
+ */
+// ex1
+/*
+ * UserInfo userinfo = new
+ * UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME")).setPw(rs.
+ * getString("PW")); response.setContentType("text/html;charset=UTF-8");
+ * PrintWriter out = response.getWriter();
+ * out.println("<html><head><title>LoginSuccessFully></title></head>");
+ * out.println("<body>로그인 성공!<br>");
+ * out.println(rs.getString("ID")+"님이 로그인되었습니다"); out.println("</body></html>");
+ */
+// ex2
+/*
+ * HttpSession session = request.getSession(); session.setAttribute("userinfo",
+ * userinfo); rd1.include(request, response); out.println("</body></html>");
+ * 
+ * //response.sendRedirect("UserInfoListServlet"); }else { rd2.forward(request,
+ * response); }
+ * 
+ * }else { rd2.forward(request, response); }
+ * 
+ * //rs = stmt.executeQuery("SELECT * FROM USERINFO WHERE ID='"+id+"'");
+ * }catch(Exception e) { e.printStackTrace(); } }
+ * 
+ * }
+ */
+@WebServlet("/UserInfoLoginServlet")
+public class UserInfoLoginServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Connection conn = null;
-		Statement stmt = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		RequestDispatcher rd1 = request.getRequestDispatcher("headerServlet");
-		RequestDispatcher rd2 = request.getRequestDispatcher("/error/LoginFail.html");
-		//String ID = request.getParameter("ID");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		try {
-			conn = DBAction.getInstance().getConnection();
-			conn.createStatement();
-			pstmt = conn.prepareStatement("SELECT * FROM USERINFO WHERE ID=?");
-			pstmt.setString(1, request.getParameter("ID"));
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				if(request.getParameter("PW").equals(rs.getString("PW"))){
-					UserInfo userinfo = new UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME")).setPw(rs.getString("PW"));
-					response.setContentType("text/html;charset=UTF-8");
-					PrintWriter out = response.getWriter();
-					out.println("<html><head><title>LoginSuccessFully></title></head>");
-					
-					//ex1
-					/*
-					UserInfo userinfo = new UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME")).setPw(rs.getString("PW"));
-					response.setContentType("text/html;charset=UTF-8");
-					PrintWriter out = response.getWriter();
-					out.println("<html><head><title>LoginSuccessFully></title></head>");
-					out.println("<body>로그인 성공!<br>");
-					out.println(rs.getString("ID")+"님이 로그인되었습니다");
-					out.println("</body></html>");
-					*/
-					//ex2
-					
-					HttpSession session = request.getSession();
-					session.setAttribute("userinfo", userinfo);
-					rd1.include(request, response);
-					out.println("</body></html>");
-					//response.sendRedirect("UserInfoListServlet");
-				}else {
-					rd2.forward(request, response);
-				}
-				
+			UserInfoDao userinfo = new UserInfoDao();
+			userinfo.exist(request.getParameter("id"), request.getParameter("PW"));
+			if(userinfo != null) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userinfo", userinfo);
+				response.sendRedirect("UserInfoListServlet");
 			}else {
-				rd2.forward(request, response);
+				RequestDispatcher rd = request.getRequestDispatcher("/error/LoginFail.html");
+				rd.forward(request, response);
 			}
-			//rs = stmt.executeQuery("SELECT * FROM USERINFO WHERE ID='"+id+"'");
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
 	}
 
