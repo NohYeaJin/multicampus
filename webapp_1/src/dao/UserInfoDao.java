@@ -12,7 +12,7 @@ import db.DBAction;
 import dto.UserInfo;
 
 public class UserInfoDao {
-	
+
 	private String Id;
 	private String Pw;
 	private String Name;
@@ -99,6 +99,57 @@ public class UserInfoDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return result;
+	}
+
+	public UserInfo selectOne(String id) {
+		UserInfo userinfo = null;
+		Connection conn = DBAction.getInstance().getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("SELECT ID,PW, NAME FROM USERINFO WHERE ID=?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				userinfo = new UserInfo().setId(rs.getString("ID")).setName(rs.getString("NAME"))
+						.setPw(rs.getNString("PW"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return userinfo;
+
+	}
+	
+	public int updateUserInfo(UserInfo userinfo) {
+		int result = -1;
+		Connection conn = DBAction.getInstance().getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("update userinfo set pw=?, name=? where id=?");
+			pstmt.setString(1,userinfo.getPw());
+			pstmt.setString(2,userinfo.getName());
+			pstmt.setString(3,userinfo.getId());
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+	
+	public int delete(String id) throws Exception{
+		int result = -1;
+		Connection conn = DBAction.getInstance().getConnection();
+		Statement stmt = null;
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate("delete from userinfo where id='" + id + "'");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 

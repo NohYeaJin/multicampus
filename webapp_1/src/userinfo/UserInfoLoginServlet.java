@@ -116,7 +116,7 @@ public class UserInfoLoginServlet extends HttpServlet {
 
 		try {
 			UserInfoDao userinfo = new UserInfoDao();
-			userinfo.exist(request.getParameter("id"), request.getParameter("PW"));
+			userinfo.exist(request.getParameter("ID"), request.getParameter("PW"));
 			if(userinfo != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userinfo", userinfo);
@@ -129,6 +129,12 @@ public class UserInfoLoginServlet extends HttpServlet {
 			e.printStackTrace();
 
 		}
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doGet(request, response);
 	}
 
 }
