@@ -10,7 +10,7 @@
 </head>
 <% UserInfo userinfo = (UserInfo)request.getAttribute("userinfo"); %>
 <body>
-<jsp:include page="/include/Header.jsp"/>
+
 <form name="updateFrm" action="UserInfoUpdateServlet" method="post">
 	<table>
 		<tr>
@@ -29,6 +29,6 @@
 		</tr>
 	</table>
 </form>
-<jsp:include page="/include/Tail.jsp"/>
+<jsp:include page="/include/Header.jsp"/>
 </body>
 </html>

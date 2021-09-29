@@ -70,7 +70,7 @@ public class UserInfoUpdateServlet extends HttpServlet {
 		 * } catch (SQLException e) { e.printStackTrace(); }
 		 * out.println("</body></html>");
 		 */
-
+		
 		try {
 			UserInfoDao userinfoDao = new UserInfoDao();
 			userinfoDao.updateUserInfo(new UserInfo().setId(request.getParameter("id"))
@@ -93,6 +93,8 @@ public class UserInfoUpdateServlet extends HttpServlet {
 		 * response.setContentType("text/html; charset = UTF-8"); PreparedStatement
 		 * pstmt = null;
 		 */
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		try {
 			UserInfoDao userinfoDao = new UserInfoDao();
 			UserInfo userinfo = userinfoDao.selectOne(request.getParameter("id"));

@@ -115,8 +115,8 @@ public class UserInfoLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			UserInfoDao userinfo = new UserInfoDao();
-			userinfo.exist(request.getParameter("ID"), request.getParameter("PW"));
+			UserInfoDao userinfoDao = new UserInfoDao();
+			UserInfo userinfo = userinfoDao.exist(request.getParameter("ID"), request.getParameter("PW"));
 			if(userinfo != null) {
 				HttpSession session = request.getSession();
 				session.setAttribute("userinfo", userinfo);

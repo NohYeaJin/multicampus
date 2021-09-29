@@ -9,12 +9,14 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserInfoDao;
 import db.DBAction;
 
 /**
@@ -38,6 +40,16 @@ public class UserInfoDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		UserInfoDao userinfoDao = new UserInfoDao();
+		try {
+			userinfoDao.delete(request.getParameter("id"));
+			response.sendRedirect("UserInfoListServlet");
+		}catch(Exception e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("/error/Error.jsp");
+			rd.forward(request,response);
+		}
+		/*
 		Connection conn = DBAction.getInstance().getConnection();
 		response.setContentType("text/html; charset = UTF-8");
 		PrintWriter out = response.getWriter();
@@ -65,6 +77,7 @@ public class UserInfoDeleteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		out.println("</body></html>");
+		*/
 	}
 
 	/**
