@@ -12,7 +12,7 @@ public class ActionFactory {
 	
 	public Action getAction(String command) {
 		Action action = null;
-		if(command.equals("")) {
+		if(command.equals("index")) {
 			action = new IndexAction();
 		}
 		else if(command.equals("login")) {

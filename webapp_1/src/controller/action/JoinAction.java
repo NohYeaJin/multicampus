@@ -15,7 +15,7 @@ public class JoinAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "member/join.jsp";
+		String url = "member/index.jsp";
 		HttpSession session = request.getSession();
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId(request.getParameter("id"));
@@ -29,13 +29,12 @@ public class JoinAction implements Action {
 		try {
 			memberDAO.JoinMember(memberVO);
 			session.setAttribute("loginUser", memberVO);
-			url = "NonageServlet?command=join";
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-		
+
 	}
 
 }

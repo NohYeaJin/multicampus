@@ -72,7 +72,6 @@ public class MemberDAO {
 			pstmt.setString(5, memberVO.getZip_um());
 			pstmt.setString(6, memberVO.getAddress());
 			pstmt.setString(7, memberVO.getPhone());
-			pstmt.setString(8, memberVO.getUseyn());
 			//pstmt.setString(8, memberVO.getIndate()); => now함수로 대체 
 			result = pstmt.executeUpdate();	
 		}catch(Exception e) {

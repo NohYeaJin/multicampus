@@ -11,7 +11,7 @@
 	<%@ include file="header.jsp" %>
 	<article>
 		<h2>Join Us</h2>
-		<form id="join" action="NonageServlet?command=join" method="post" name="formm">
+		<form id="join" action="../NonageServlet?command=join" method="post" name="formm">
 			<table>
 				<tr>
 				<td colspan="2">회원가입</td>
@@ -37,12 +37,12 @@
 					<td><input type="password" name="pwdcheck"></td>
 				</tr>
 				<tr>
-					<td>주소</td>
-					<td><input type="text" name="address"/><button onclick="post_open()">우편번호 검색</button></td>
-				</tr>
-				<tr>
 					<td>우편번호</td>
 					<td><input type="text" name="zip_num"/><button onclick="post_open()">우편번호 검색</button></td>
+				</tr>
+				<tr>
+					<td>주소</td>
+					<td><input type="text" name="address"/></td>
 				</tr>
 				<tr>
 					<td>상세주소</td>
