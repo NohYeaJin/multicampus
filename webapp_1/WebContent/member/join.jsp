@@ -21,6 +21,7 @@ function post_open(){
 	}
 }
 
+
 </script>
 </head>
 <body>
@@ -62,7 +63,7 @@ function post_open(){
 				</tr>
 				<tr>
 					<td>상세주소</td>
-					<td><input type="text" name="address" size="50"/></td>
+					<td><input type="text" id="detail_address" name="detail"  value="" size="50"/></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>

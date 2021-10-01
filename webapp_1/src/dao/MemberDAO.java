@@ -69,10 +69,11 @@ public class MemberDAO {
 			pstmt.setString(2, memberVO.getPwd());
 			pstmt.setString(3, memberVO.getName());
 			pstmt.setString(4, memberVO.getEmail());
+			//System.out.println(memberVO.getAddress());
 			pstmt.setString(5, memberVO.getZip_um());
 			pstmt.setString(6, memberVO.getAddress());
 			pstmt.setString(7, memberVO.getPhone());
-			//pstmt.setString(8, memberVO.getIndate()); => nowÇÔ¼ö·Î ´ëÃ¼ 
+			//pstmt.setString(8, memberVO.getIndate()); 
 			result = pstmt.executeUpdate();	
 		}catch(Exception e) {
 			e.printStackTrace();		
