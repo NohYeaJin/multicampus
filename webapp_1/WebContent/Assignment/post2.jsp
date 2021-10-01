@@ -14,6 +14,7 @@
 		<tr>
 			<th>우편번호</th>
 			<th>주소</th>
+			<th>text</th>
 		</tr>
 		<%
 			ArrayList<AddressVo> list = (ArrayList<AddressVo>)request.getAttribute("addressList");
@@ -24,7 +25,7 @@
 			for(AddressVo data: list){
 		%>
 		<tr>
-			<td><a href="#"><%=data.getZipCode() %></a></td>
+			<td><a href="#" onclick="selectCode('<%=data.getZipCode() %>','<%= data.getSido() %> <%= data.getGugun() %> <%= data.getDong() %> <%= data.getRi() %> <%=data.getBldg() %> <%= data.getBunji() %>')"><%=data.getZipCode() %></a></td>
 			<td>
 			<%= data.getSido() %>', '<%= data.getGugun() %>', '<%= data.getDong() %>, '<%= data.getRi() %>','<%=data.getBldg() %>
 			<%= data.getBunji() %>
@@ -32,5 +33,14 @@
 		</tr>
 		<%} %>
 	</table>
+	<script>
+	function selectCode(value,address){
+		opener.document.getElementById("zipcode").value = value;
+		opener.document.getElementById("basic_address").value = address;
+		window.close();
+	}
+
+   </script>
+
 </body>
 </html>

@@ -72,12 +72,17 @@ public class MemberDAO {
 			pstmt.setString(5, memberVO.getZip_um());
 			pstmt.setString(6, memberVO.getAddress());
 			pstmt.setString(7, memberVO.getPhone());
-			//pstmt.setString(8, memberVO.getIndate()); => now�Լ��� ��ü 
+			//pstmt.setString(8, memberVO.getIndate()); => nowÇÔ¼ö·Î ´ëÃ¼ 
 			result = pstmt.executeUpdate();	
 		}catch(Exception e) {
 			e.printStackTrace();		
 		}
 		
 		return result;
+	}
+
+	public boolean overlappedID(String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

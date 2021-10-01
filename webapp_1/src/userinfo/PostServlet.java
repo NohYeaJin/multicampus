@@ -47,7 +47,6 @@ public class PostServlet extends HttpServlet {
 		String dong = request.getParameter("dong");
 		
 		
-		
 		//RequestDispatcher rd = request.getRequestDispatcher("/jspEx/MemberForm.jsp");
 		//rd.include(request, response);
 		
@@ -109,6 +108,7 @@ public class PostServlet extends HttpServlet {
 					*/
 					
 				}
+				request.setAttribute("addressList", list);
 				request.getRequestDispatcher("Assignment/post2.jsp").include(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -125,7 +125,6 @@ public class PostServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			//request.setAttribute("addressList", list);
 		}
 		
 	}

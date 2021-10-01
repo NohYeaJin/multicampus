@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Class 선택자 연습</title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript">
+	function fn_process(){
+		console.log("success");
+		$.ajax({
+			type:"post",
+			async:false,
+			url: "http://localhost:8070/webapp_1/AjaxTest2",	
+			dataType:"xml",
+			success:function (info,textStatus){
+				$(info).find("book").each(function(){
+					var title = $(this).find("title").text();
+					var writer = $(this).find("writer").text();
+					var image = $(this).find("image").text();
+					$("#bookInfo").append(
+							"<p>" + title + "</p>" +
+							"<p>" + writer + "</p>" + 
+							"<img src=" + image + " />"
+							);
+					
+				});
+			},
+			error:function(data,textStatus){
+				alert("에러가 발생했습니다.");
+			},
+			complete:function(data,textStatus){
+				alert("작업을 완료했습니다.");
+			}
+		});
+	}
+	</script>
+<body>
+<input type="button" value="불러오기" onclick="fn_process()" />
+<div id="bookInfo"></div>
+</body>
+</html>

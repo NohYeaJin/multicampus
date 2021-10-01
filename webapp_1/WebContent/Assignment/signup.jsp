@@ -10,7 +10,7 @@
 function post_open(){
 	var frmMember = document.signup;
 	var dong = frmMember.dong.value.trim();
-	if(dong.length==0 || dong=""){
+	if(dong.length==0 || dong==""){
 		alert("~동을 입력해 주세요");
 	}else{
 		window.open('/webapp_1/PostServlet?dong='+dong, 'pop','width=300,height=300');

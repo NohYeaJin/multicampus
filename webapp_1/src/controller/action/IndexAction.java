@@ -14,16 +14,18 @@ import dao.ProductVO;
 public class IndexAction implements Action{
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/index.jsp";
+		String url = "NonageServlet?command=join";
 		ProductDAO productDAO = ProductDAO.getInstance();
 		ArrayList<ProductVO> productVO = new ArrayList<>();
-		ArrayList<ProductVO> newProductList = null, bestProductList = null;
+		ArrayList<ProductVO> newProductList = null;
+		ArrayList<ProductVO> bestProductList = null;
 		try {
 			newProductList = productDAO.listNewProduct();
-			
+			bestProductList = productDAO.listBestProduct();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 		request.setAttribute("newProductList", newProductList);
 		request.setAttribute("bestProductList", bestProductList);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

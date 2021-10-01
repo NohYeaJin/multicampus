@@ -5,7 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>Insert title here</title>
+<title>SignUp</title>
+<script>
+var openWin;
+function post_open(){
+	var frmMember = document.formm;
+	var dong = frmMember.zip_num.value.trim();
+	console.log(dong);
+	if(dong.length==0 || dong==""){
+		alert("~동을 입력해 주세요");
+	}else{
+		window.name = "parentForm";
+		openWin = window.open('/webapp_1/PostServlet?dong='+dong, 'pop','width=300,height=300');
+		
+	}
+}
+
+</script>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
@@ -38,15 +54,15 @@
 				</tr>
 				<tr>
 					<td>우편번호</td>
-					<td><input type="text" name="zip_num"/><button onclick="post_open()">우편번호 검색</button></td>
+					<td><input type="text" name="zip_num" id="zipcode" value=""/><input id="postopen" type="button" onclick="post_open()" value="우편번호 검색"/></td>
 				</tr>
 				<tr>
 					<td>주소</td>
-					<td><input type="text" name="address"/></td>
+					<td><input type="text" name="address" id="basic_address" size="50"/></td>
 				</tr>
 				<tr>
 					<td>상세주소</td>
-					<td><input type="text" name="address"/></td>
+					<td><input type="text" name="address" size="50"/></td>
 				</tr>
 				<tr>
 					<td>전화번호</td>
@@ -57,4 +73,6 @@
 		</form>
 	</article>
 </body>
+
+
 </html>

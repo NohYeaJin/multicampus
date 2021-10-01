@@ -42,9 +42,17 @@ a{color: white;}
 a:link {text-decoration: none;}
 
 input{
-	width: 300px;
+	width: 400px;
 	height: 30px;
-	font-size: 30px;
+	font-size: 15px;
+}
+
+#postopen{
+	width:120px;
+	font-size:15px;
+	height: 30px;
+	margin-left: 20px;
+	
 }
  table{
  width: 800px;
@@ -59,5 +67,9 @@ input{
   }
 
 
-
+ul li.itemlist{
+	margin-top: 20px;
+	float:left;
+	margin-right: 20px;
+}
 

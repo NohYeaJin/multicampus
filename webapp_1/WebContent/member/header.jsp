@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/member/style.css">
 <title>Insert title here</title>
 </head>
 <body>
 	<header>
 		<div id="logoImg">
-			<img src="logo.png">
+			<img src="${pageContext.request.contextPath}/member/logo.png">
 		</div>
 		<div id="menu">
 		<ul>
