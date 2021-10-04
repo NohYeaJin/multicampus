@@ -37,6 +37,15 @@ public class NonageServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		ActionFactory factory = ActionFactory.getInstance();
 		Action action = factory.getAction(command);
+		
+		if(command.startsWith("kind")) {
+			String[] commands = command.split("/");
+			request.setAttribute("kind", commands[1]);
+		}
+		else if(command.startsWith("product")) {
+			String[] commands = command.split("/");
+			request.setAttribute("product", commands[1]);
+		}
 		if(action!=null) {
 			action.execute(request, response);
 		}

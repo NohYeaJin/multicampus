@@ -9,9 +9,12 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import controller.src.Component;
 import db.DBAction;
 import dto.Member;
 
+
+@Component("memberDao")
 public class MemberDAOImpl implements MemberDAO2{
 	private DataSource ds;
 	public void setDataSource(DataSource ds) {
@@ -22,25 +25,73 @@ public class MemberDAOImpl implements MemberDAO2{
 
 	@Override
 	public int insert(Member member) throws Exception {
-		// TODO Auto-generated method stub
+		Connection conn = ds.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("insert into members3(email,manme,pwd,cre_date,mod_date) values(?,?,?,now(),now())");
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getPassword());
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 
 	@Override
 	public int delete(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = ds.getConnection();
+		Statement stmt = null;
+		ResultSet rs = null;
+		Member member = null;
+		int result = -1;
+		try {
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate("DELETE FROM MEMBERS3 WHERE MNO = "+no);
+			return result;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
 	public Member selectOne(int no) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = ds.getConnection();
+		Statement stmt = null;
+		ResultSet rs = null;
+		Member member = null;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery("SELECT MNO,MNAME,EMAIL,CRE_DATE FROM MEMBERS3 WHERE MNO = "+no);
+			if(rs.next()) {
+				member.setNo(rs.getInt("NO"));
+				member.setName(rs.getString("MNAME"));
+				member.setEmail(rs.getString("EMAIL"));
+				member.setCreatedDate(rs.getDate("CRE_DATE"));
+				return member;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return member;
 	}
 
 	@Override
 	public int update(Member member) throws Exception {
-		// TODO Auto-generated method stub
+		Connection conn = ds.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement("update members3 set email = ?, mname=?, pwd = ?, mod_date = now() where mno=?");
+			pstmt.setString(1, member.getEmail());
+			pstmt.setString(2, member.getName());
+			pstmt.setString(3, member.getPassword());
+			pstmt.setInt(4, member.getNo());
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return 0;
 	}
 

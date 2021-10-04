@@ -3,6 +3,7 @@ package controller.src;
 import controller.action.Action;
 import controller.action.IndexAction;
 import controller.action.JoinAction;
+import controller.action.ProductKindAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -21,6 +22,19 @@ public class ActionFactory {
 		else if(command.equals("join")) {
 			action = new JoinAction();
 		}
+		else if(command.startsWith("kind")) {
+			String[] products = command.split("/");
+			action = new ProductKindAction();	
+			
+		}
+		
+		else if(command.startsWith("product")) {
+			String[] products = command.split("/");
+			
+			//action = new ProductInfoAction();	
+		}
+		
+		
 		return action;
 	}
 }
