@@ -6,10 +6,10 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/work2/spAop/lib/cglib-nodep-2.1_3.jar"/>
-	<classpathentry kind="lib" path="C:/work2/spAop/lib/commons-dbcp.jar"/>
-	<classpathentry kind="lib" path="C:/work2/spAop/lib/commons-logging.jar"/>
-	<classpathentry kind="lib" path="C:/work2/spAop/lib/commons-pool.jar"/>
-	<classpathentry kind="lib" path="C:/work2/spAop/lib/spring.jar"/>
+	<classpathentry kind="lib" path="C:/Users/노예진/git/multicampus/spAop/lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/노예진/git/multicampus/spAop/lib/commons-dbcp.jar"/>
+	<classpathentry kind="lib" path="C:/Users/노예진/git/multicampus/spAop/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="C:/Users/노예진/git/multicampus/spAop/lib/commons-pool.jar"/>
+	<classpathentry kind="lib" path="C:/Users/노예진/git/multicampus/spAop/lib/spring.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
