@@ -14,7 +14,7 @@ import dao.ProductVO;
 public class IndexAction implements Action{
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "NonageServlet?command=join";
+		String url = "member/index.jsp";
 		ProductDAO productDAO = ProductDAO.getInstance();
 		ArrayList<ProductVO> productVO = new ArrayList<>();
 		ArrayList<ProductVO> newProductList = null;
