@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-   <%@ page import="java.util.*,dto.UserInfo" %>
+   <%@ page import="java.util.*,com.example.sba.domain.UserInfo" %>
 <!DOCTYPE html>
 <html>
 <head>

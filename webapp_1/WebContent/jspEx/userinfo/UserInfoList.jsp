@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import = "dto.UserInfo, java.util.*, java.sql.*,db.DBAction" %>  
+ <%@ page import = "com.example.sba.domain.UserInfo, java.util.*, java.sql.*,db.DBAction" %>  
 <!DOCTYPE html>
 <html>
 <head>

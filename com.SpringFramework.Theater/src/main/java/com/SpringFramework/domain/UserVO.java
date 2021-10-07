@@ -6,6 +6,5 @@ public class UserVO {
 	private String email;
 	private String user_name;
 	private String phonenum;
-	
-	
+
 }

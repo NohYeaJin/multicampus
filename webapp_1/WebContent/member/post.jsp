@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import = "dto.AddressVo, java.util.*" %>
+<%@ page import = "com.example.sba.domain.AddressVo, java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>

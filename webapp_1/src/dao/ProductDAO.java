@@ -61,15 +61,16 @@ public class ProductDAO {
 		return productList;
 	}
 	
-	public ArrayList<ProductVO> listKindProduct() throws Exception{
+	public ArrayList<ProductVO> listKindProduct(int kind) throws Exception{
 		ArrayList<ProductVO> productList = new ArrayList<>();
 		Connection conn = DBAction.getInstance().getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select * from best_pro_view";
+		String sql = "select * from product where kind=?";
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, kind);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ProductVO product = new ProductVO();

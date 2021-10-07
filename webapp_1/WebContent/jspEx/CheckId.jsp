@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="db.DBAction, java.sql.*, dto.UserInfo"%>
+	pageEncoding="UTF-8" import="db.DBAction, java.sql.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <%--<jsp:useBean id="userinfo" class="dto.UserInfo" scope="request"/> --%>
-<% UserInfo userinfo = (UserInfo)request.getAttribute("userinfo"); %>
+<%-- -- <% UserInfo userinfo = (UserInfo)request.getAttribute("userinfo"); %>-->
 <body>
 <%!
 		Connection conn = DBAction.getInstance().getConnection();
