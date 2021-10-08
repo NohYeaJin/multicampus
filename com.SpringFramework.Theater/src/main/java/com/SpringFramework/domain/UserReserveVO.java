@@ -1,12 +1,16 @@
 package com.SpringFramework.domain;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class UserReserveVO {
-	private int user_num;
+	private String user_id;
 	private int reserve_num;
-	private String movie_num;
+	private String movie_name;
+	private String theater;
+	private String theater_room_name;
 	private int people_num;
-	private String price;
+	private Timestamp movie_time;
+	private int price;
 	private ArrayList<SeatVO> seats;
 }
