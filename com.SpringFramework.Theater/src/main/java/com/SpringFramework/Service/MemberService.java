@@ -1,12 +1,14 @@
 package com.SpringFramework.Service;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.SpringFramework.domain.UserReserveVO;
 import com.SpringFramework.domain.UserVO;
 
 public interface MemberService {
 	
 	//login
-	public int MemberLogin(String user_id, String user_pw);
+	public int MemberLogin(@Param("user_id") String user_id,@Param("user_pw") String user_pw);
 	
 	//signup
 	public void MemberRegister(UserVO userinfo);

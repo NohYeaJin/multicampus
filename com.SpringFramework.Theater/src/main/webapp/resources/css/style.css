@@ -90,14 +90,15 @@ a:visited {
 
 #trending ul li,
 #newly ul li {
-  margin-left: 20px;
+	float:left;
+  margin-left: 10px;
   margin-right: 20px;
 }
 
 #trending ul li img,
 #newly ul li img {
-  height: 380px;
-  width: 300px;
+  height: 360px;
+  width: 246px;
   border: 3px solid black;
 }
 
@@ -105,12 +106,14 @@ a:visited {
   font-family: "Nanum Gothic", sans-serif;
   font-size: 30px;
   margin-right: 10px;
+  text-align:center;
 }
 
 .movie_name {
   margin-left: 40px;
   font-size: 15px;
   color: red;
+  text-align:center;
 }
 
 #ad {
@@ -146,6 +149,17 @@ a:visited {
   margin-left: 10px;
   margin-top: 40px;
 }
+
+.selected2{
+	color: black;
+	background-color:rgb(246, 181, 105); 
+}
+}
+
+#reserve_tables table td.selected2 a {
+	color:black
+}
+
 
 #date table tr,
 #movie table tr,
@@ -274,9 +288,24 @@ input#confirm {
   border: none;
   border-radius: 5px;
 }
+input#confirm2{
+	color: black;
+  width: 150px;
+  height: 60px;
+  font-size: 30px;
+	background-color: #FFF100;
+	margin-left: 1100px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 5px;
+}
 
 input#confirm:hover {
   color: black;
+}
+
+input#confirm2:hover {
+  color: white;
 }
 
 #login {
@@ -355,7 +384,12 @@ fieldset {
   margin-top: 20px;
 }
 
-input:focus {
+.selected {
+  height: 50px;
+  width: 50px;
+  margin-left: 20px;
+  font-size: 20px;
+  margin-top: 20px;
   background-color: rgb(246, 181, 105);
 }
 
@@ -399,4 +433,199 @@ input:focus {
   background-color: rgb(246, 181, 105);
   border: none;
   border-radius: 5px;
+}
+
+/* ≈« ¿¸√º Ω∫≈∏¿œ */
+#mypage_head {
+  font-size: 40px;
+  padding-top: 20px;
+}
+.tabs,
+#mypage_head {
+  margin-top: 50px;
+  padding-bottom: 40px;
+  width: 1400px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* ≈« Ω∫≈∏¿œ */
+.tab_item {
+  width: calc(100% / 3);
+  height: 50px;
+  border-bottom: 3px solid #333333;
+  background-color: #f8f8f8;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #333333;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/* ∂Ûµø¿ πˆ∆∞ UIªË¡¶*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/* ≈« ƒ¡≈Ÿ√˜ Ω∫≈∏¿œ */
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+.tab_content table {
+  margin: 0 auto;
+  border-spacing: 0 20px;
+}
+
+.tab_content table tr {
+  width: 600px;
+  height: 200px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.tab_content table tr td {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 600px;
+}
+
+table#update{
+	width: 800px;
+	border-spacing: 0 0px;
+	font-size: 25px;
+}
+
+table#update tr{
+	height: 100px;
+}
+
+table#update tr td input{
+	font-size:25px;
+	height: 30px;
+}
+
+/* º±≈√ µ» ≈« ƒ‹≈Ÿ√˜∏¶ «•Ω√ */
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content {
+  display: block;
+}
+
+/* º±≈√µ» ≈« Ω∫≈∏¿œ */
+.tabs input:checked + .tab_item {
+  background-color: #333333;
+  color: #fff;
+}
+
+#mypage_movie_img {
+  height: 180px;
+  width: 120px;
+  float: left;
+  margin-left: 50px;
+}
+
+#mypage_movie_ppl,
+#mypage_movie_place,
+#mypage_movie_datetime,
+#mypage_movie_name {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#mypage_movie_undo {
+  height: 40px;
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+  background-color: rgb(246, 181, 105);
+  border: none;
+  border-radius: 5px;
+}
+#mypage_movie_undo:hover {
+  color: black;
+}
+
+img#movies_poster {
+  height: 400px;
+  width: 280px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+#movies ul {
+  margin-left: 300px;
+  margin-right: 300px;
+  list-style: none;
+}
+
+#movies ul li {
+  float: left;
+  height: 480px;
+  width: 300px;
+  border: 3px solid black;
+  border-radius: 10px;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+}
+
+#movies ul li #movie_info {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgb(246, 181, 105);
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#movies ul li #movie_info a:hover {
+  color: white;
+}
+
+#movies_head {
+  margin-top: 40px;
+  font-size: 50px;
+  color: #ff7f50;
+  text-align: center;
+  margin-bottom:20px;
+}
+
+#goto {
+  color: red;
+}
+
+input.fast_btn{
+	margin-top: 40px;
+	margin-left:20px;
+  float:left;
+  color: white;
+  width: 200px;
+  height: 100px;
+  font-size: 30px;
+  background-color: lightgray;
+  border: none;
+  border-radius: 5px;
+}
+
+.selected3{
+	background-color:rgb(246, 181, 105);
+}
+
+input.fast_btn:hover{
+	color:black;
+	
 }

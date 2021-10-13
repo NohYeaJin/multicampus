@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "=//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.SpringFramework.mapper.MovieMapper">
+
+	<resultMap id = "kindMap" type="com.SpringFramework.domain.KindVO">
+		<result column="kind_id" property="kind_id"></result>
+		<result column="kind_name" property="kind_name"></result>
+	</resultMap> 
+	
+	<resultMap id = "seatMap" type="com.SpringFramework.domain.SeatVO">
+		<result column="time_id" property="time_id"></result>
+		<result column="seat" property="seat"></result>
+	</resultMap>
+	
+	<resultMap id="MovieMap" type="com.SpringFramework.domain.MovieVO">
+		<result column="movie_id" property="movie_id"></result>
+		<result column="movie_name" property="movie_name"></result>
+		<result column="movie_info" property="movie_info"></result>
+		<result column="age_limit" property="age_limit"></result>
+		<result column="director_name" property="director_name"></result>
+		<result column="register_date" property="register_date"></result>
+		<result column="end_date" property="end_date"></result>
+		<result column="time_duration" property="time_duration"></result>
+		<result column="date_duration" property="date_duration"></result>
+		<result column="views" property="views"></result>
+		<result column="movie_poster" property="movie_poster"></result>
+		<collection property="kind" resultMap="kindMap"/>
+	</resultMap>
+	
+	<resultMap id="TheaterMap" type="com.SpringFramework.domain.TheaterVO">
+		<result column="theater_id" property="theater_id"></result>
+		<result column="theater_name" property="theater_name"></result>
+	</resultMap>
+	
+	<resultMap id="TimeMap" type="com.SpringFramework.domain.TheaterRoomTimeVO">
+		<result column="time_id" property="time_id"></result>
+		<result column="room_id" property="room_id"></result>
+		<result column="start_time" property="start_time"></result>
+		<result column="movie_id" property="movie_id"></result>
+		<result column="left_seat_num" property="left_seat_num"></result>
+	</resultMap>
+	
+	<resultMap id="OrderMap" type="com.SpringFramework.domain.OrderVO">
+		<result column="time_id" property="time_id"></result>
+		<result column="movie_name" property="movie_name"></result>
+		<result column="theater_name" property="theater_name"></result>
+		<result column="theater_room_name" property="theater_room_name"></result>
+		<result column="start_time" property="movie_start_time"></result>
+	</resultMap>
+<!-- 
+private String movie_name;
+	private String theater_name;
+	private String theater_room_name;
+	private Timestamp movie_start_time;
+ -->
+ 
+	<select id="getOrderData" resultMap = "OrderMap">
+		SELECT * FROM theater_rooms_time a, theater_rooms b, movie_info c, theater d WHERE a.room_id = b.theater_rooms_id AND c.movie_id = a.movie_id AND a.time_id = #{time_id} LIMIT 1
+	</select>
+	<select id="findAllMovie" resultMap = "MovieMap">
+		SELECT a.*,b.* from movie_info a LEFT JOIN movie_kind b ON a.kind = b.kind_id	
+	</select>
+	
+	<select id="findBestMovie" resultMap = "MovieMap">
+		select * from movie_info order by views desc limit 4
+	</select>
+	
+	<select id="findRecentMovie" resultMap = "MovieMap">
+		select * from movie_info order by release_date desc limit 4
+	</select>
+	
+	<select id="findAllTheater" resultMap = "TheaterMap">
+		SELECT * from theater;	
+	</select>
+	
+	<select id="findTimeByMovieAndTheater" resultMap = "TimeMap">
+		SELECT * from theater_rooms_time a LEFT JOIN theater_rooms b ON  a.room_id = b. theater_rooms_id where movie_id = #{movie_id} and theater_id = #{theater_id} and DATE(start_time) = DATE(#{date}) order by start_time
+	</select>
+	
+	<select id="getTakenSeats" resultMap = "seatMap">
+		SELECT * from time_taken_seats where time_id = #{time_id}
+	</select>
+	
+	<select id="getTheaterSeatType" resultType="int">
+		SELECT room_seat_type from theater_rooms_time a LEFT JOIN theater_rooms b ON a.room_id = b.theater_rooms_id where a.time_id = #{time_id}
+	</select>
+	
+
+</mapper>

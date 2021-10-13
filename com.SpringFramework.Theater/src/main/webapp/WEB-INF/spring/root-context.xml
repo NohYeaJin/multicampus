@@ -27,5 +27,5 @@
 		
 		<context:component-scan base-package="com.SpringFramework.spring" />
 		<mybatis-spring:scan base-package="com.SpringFramework.mapper"/>
-		<context:component-scan base-package="com.SpringFramework.service" />
+		<context:component-scan base-package="com.SpringFramework.Service" />
 </beans>

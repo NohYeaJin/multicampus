@@ -25,6 +25,8 @@ public class UserVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
 	public String getUser_name() {
 		return user_name;
 	}

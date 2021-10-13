@@ -9,7 +9,8 @@ $(function(){
 			data: {id: _id, password: _password},
 			success: function(data,textStatus){
 				var memberinfo = JSON.parse(data);
-				alert("Data:" + memberinfo.name + "님 login ok\n" + "Status: success");
+				//alert("Data:" + memberinfo.name + "님 login ok\n" + "Status: success");
+				alert(memberinfo.id +":" + memberinfo.password);
 				},
 			error: function(data,textStatus){
 				alert("에러 발생");

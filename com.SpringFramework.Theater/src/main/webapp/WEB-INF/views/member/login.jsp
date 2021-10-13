@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/WEB-INF/views/include/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,37 +9,25 @@
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
-	<header>
-			<ul>
-				<li>login</li>
-				<li>signup</li>
-				<li>logout</li>
-				<li>mypage</li>
-			</ul>
-	</header>
-	<div id="main_bar">
-		YJ Theater
-	</div>
-	<nav>
-		<ul>
-			<li id="home">Home</li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Movies</a></li>
-			<li><a href="#">Reservation</a></li>
-			<li><a href="#">Facilities</a></li>
-			<li id="payment"><a href="#">Payments & discount</a></li>
-			<li><a href="#">Contact</a></li>
-		</ul>  
-	</nav>
+	<form action="/login.do" method="post">
     <div id="login">
-        <div id="login_head">�α���</div>
+        <div id="login_head">로그인</div>
         <div id="login_content">
-            <input type="text" value="id"/><br>
-            <input type="password" value="pw"/>
-            <input type="button" id="confirm" value="Ȯ ��"/>
-            <div id="idfind"><a href="#">���̵� ã��</a></div>
-            <div id="pwfind"><a href="#">��й�ȣ ã��</a></div>
+            <input type="text" value="id" name="user_id"/><br>
+            <input type="password" value="pw" name="user_pw"/>
+            <input type="submit" id="confirm" value="확 인"/>
+            <div id="idfind"><a href="#">아이디 찾기</a></div>
+            <div id="pwfind"><a href="#">비밀번호 찾기</a></div>
         </div>
     </div>
+    </form>
     </body>
+    <script>
+    var msg="${loginmsg}";
+    if(msg=="Success"){
+    	alert("성공적으로 로그인되었습니다.");
+    	}else if(msg=="Fail"){
+    	alert("로그인 정보가 맞지 않습니다. 다시 확인해주세요");
+    }
+    </script>
     </html>

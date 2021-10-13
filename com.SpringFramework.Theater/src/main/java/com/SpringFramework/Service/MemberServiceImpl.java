@@ -1,11 +1,15 @@
 package com.SpringFramework.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.SpringFramework.domain.UserReserveVO;
 import com.SpringFramework.domain.UserVO;
 import com.SpringFramework.mapper.MemberMapper;
 
+import lombok.AllArgsConstructor;
+
+@Service
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
