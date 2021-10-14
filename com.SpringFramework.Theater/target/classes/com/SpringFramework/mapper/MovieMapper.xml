@@ -67,6 +67,10 @@ private String movie_name;
 		select * from movie_info order by views desc limit 4
 	</select>
 	
+	<select id="getMovieInfo" resultMap = "MovieMap">
+		select * from movie_info where movie_id = #{movie_id}
+	</select>
+	
 	<select id="findRecentMovie" resultMap = "MovieMap">
 		select * from movie_info order by release_date desc limit 4
 	</select>

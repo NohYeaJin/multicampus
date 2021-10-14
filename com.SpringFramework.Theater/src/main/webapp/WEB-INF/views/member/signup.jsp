@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td class="tr_name">아이디: </td>
-                        <td><input type="text" name="user_id" size=20><input type="button" id="idcheck" value="중복확인"/></td>
+                        <td><input type="text" name="user_id" size=20><input type="button" id="idcheck" onclick="alert('사용 가능한 아이디입니다');" value="중복확인"/></td>
                     </tr>
                     <tr>
                         <td class="tr_name">이름: </td>
@@ -38,7 +38,7 @@
                     </tr>
                     <tr>
                         <td class="tr_name">전화번호: </td>
-                        <td><input type="text" name="phonenum" size = 6/> - <input type="text" name="phone" size = 10/> - <input type="text" name="phone" size = 10/></td>
+                        <td><input type="text" name="phonenum1" size = 6/> - <input type="text" size = 10 name="phonenum2"/> - <input type="text" name="phonenum3" size = 10/></td>
                     </tr>
                 </table>
                 <input type="submit" id="confirm" value="확 인"/>

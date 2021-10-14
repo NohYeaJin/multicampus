@@ -8,7 +8,9 @@ PUBLIC "=//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="user_pw" property="user_pw"></result>
 		<result column="email" property="email"></result>
 		<result column="user_name" property="user_name"></result>
-		<result column="phonenum" property="phonenum"></result>
+		<result column="phonenum1" property="phonenum1"></result>
+		<result column="phonenum2" property="phonenum2"></result>
+		<result column="phonenum3" property="phonenum3"></result>
 	</resultMap>
 	
 	<select id="MemberLogin" resultType = "int">
@@ -16,8 +18,8 @@ PUBLIC "=//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="MemberRegister">
-		INSERT INTO member_info (user_id,user_pw,email,user_name,phonenum)
-		VALUES (#{user_id}, #{user_pw},#{email}, #{user_name},#{phonenum})
+		INSERT INTO member_info (user_id,user_pw,email,user_name,phonenum1,phonenum2,phonenum3)
+		VALUES (#{user_id}, #{user_pw},#{email}, #{user_name},#{phonenum1},#{phonenum2},#{phonenum3})
 	</insert>
 	
 	<select id="getMemberInfo" resultMap="MemberMap">

@@ -17,7 +17,7 @@
             <c:forEach var="row" items="${movies}"  varStatus="varstatus">
             <li>
                 <img id = "movies_poster" src="/resources/image/${row.movie_poster}"/>
-                <div id="movie_info"><a href="#">${row.movie_name}(${row.age_limit})</a><br>
+                <div id="movie_info"><a href="/movieDetail/${row.movie_id}">${row.movie_name}(${row.age_limit})</a><br>
                 <a href="/fastReserve" id="goto">예매하러 가기</a>
                 </div>
             </li>

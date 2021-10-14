@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "=//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.SpringFramework.mapper.ReplyMapper">
+	<select id="showReplies" resultType="com.SpringFramework.domain.ReplyVO">
+		SELECT comment_id,movie_id,user_id,content_text,reg_date,edit_date
+		FROM comments where user_id = #{user_id} ORDER BY REG_DATE desc
+	</select>
+
+	<select id="selectReplies" resultType="com.SpringFramework.domain.ReplyVO">
+		SELECT comment_id,movie_id,user_id,content_text,reg_date,edit_date
+		FROM comments where movie_id = #{movie_id} ORDER BY REG_DATE desc
+	</select>
+
+	<insert id="insertReply" parameterType="com.SpringFramework.domain.ReplyVO">
+		INSERT INTO COMMENTS(MOVIE_ID, CONTENT_TEXT, USER_ID, REG_DATE, EDIT_DATE)
+		VALUES (#{movie_id}, #{content_text}, #{user_id},now(),now())
+	</insert>
+
+
+
+</mapper>

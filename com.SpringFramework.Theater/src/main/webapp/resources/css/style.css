@@ -18,6 +18,12 @@ header ul li {
   color: white;
 }
 
+header ul li a{
+	color:white;
+	text-decoration: none;
+}
+
+
 #main_bar {
   margin-top: 30px;
   font-size: 60px;
@@ -56,11 +62,11 @@ nav ul li#payment {
   width: 300px;
 }
 
-a:link {
+nav ul li a:link {
   text-decoration: none;
   color: black;
 }
-a:visited {
+nav ul li a:visited {
   text-decoration: none;
   color: black;
 }
@@ -100,6 +106,24 @@ a:visited {
   height: 360px;
   width: 246px;
   border: 3px solid black;
+}
+
+#trending ul li a:link {
+  text-decoration: none;
+  color: black;
+}
+#trending ul li a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+#newly ul li a:link {
+  text-decoration: none;
+  color: black;
+}
+#newly ul li a:visited {
+  text-decoration: none;
+  color: black;
 }
 
 .movie_name a {
@@ -174,6 +198,21 @@ a:visited {
 #time table tr td a:hover,
 #theater table tr td a:hover {
   color: black;
+}
+
+#date table tr td a:link,
+#movie table tr td a:link,
+#time table tr td a:link,
+#theater table tr td a:link{
+	text-decoration:none;
+	color:gray;
+}
+#date table tr td a:visited,
+#movie table tr td a:visited,
+#time table tr td a:visited,
+#theater table tr td a:visited{
+	text-decoration:none;
+	color:gray;
 }
 
 #date table tr td {
@@ -529,10 +568,11 @@ table#update tr td input{
 }
 
 #mypage_movie_img {
-  height: 180px;
-  width: 120px;
+  height: 160px;
+  width: 170px;
   float: left;
-  margin-left: 50px;
+  margin-top: 2px;
+  margin-left: 30px;
 }
 
 #mypage_movie_ppl,
@@ -579,6 +619,17 @@ img#movies_poster {
   margin-left: 50px;
   margin-bottom: 50px;
 }
+
+#movies ul li a:link{
+	text-decoration:none;
+	color:black;
+}
+#movies ul li a:visited{
+	text-decoration:none;
+	color:black;
+}
+
+
 
 #movies ul li #movie_info {
   margin-top: 10px;
@@ -628,4 +679,58 @@ input.fast_btn{
 input.fast_btn:hover{
 	color:black;
 	
+}
+
+#detail_img{
+	float:left;
+	margin-left: 500px;
+	height: 610px;
+	width: 450px;
+	margin-top: 20px;
+}
+
+table#detail_table{
+	margin-left: 50px;
+	margin-top: 20px;
+	float:left;
+	font-size: 22px;
+}
+
+table#detail_table tr#movie_name{
+	font-size: 30px;
+}
+
+table#detail_table tr td{
+	width: 500px;
+	height: 115px;
+	border-bottom: 2px solid gray;
+}
+
+#comments{
+	font-size: 15px;
+	margin-top: 50px;
+	float:left;
+	margin-left:500px;
+}
+
+#comment_btn{
+	font-size: 20px;
+	height: 50px;
+	width: 60px;
+	float:right;
+	margin-left: 10px;
+	border-radius: 5px;
+	background-color: rgb(246, 181, 105);
+	color:white;
+	margin-bottom: 20px;
+}
+
+table#commentList{
+	font-size: 20px;
+		margin-bottom: 20px;
+	
+}
+
+table#commentList tr td{
+	border-bottom: 2px solid rgb(246, 181, 105);
 }

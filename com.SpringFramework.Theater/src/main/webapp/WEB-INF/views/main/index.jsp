@@ -16,7 +16,7 @@
 			<c:forEach var="row" items="${bestmovies}"  varStatus="varstatus">
 			<li>
 				<img src="/resources/image/${row.movie_poster}"/>
-				<div class="movie_name"><a href="#">${row.movie_name}</a>(${row.age_limit})</div>
+				<div class="movie_name"><a href="/movieDetail/${row.movie_id}">${row.movie_name}</a>(${row.age_limit})</div>
 			</li>
 			</c:forEach>
 		</ul>
@@ -33,7 +33,7 @@
 			<c:forEach var="row" items="${recentmovies}"  varStatus="varstatus">
 			<li>
 				<img src="/resources/image/${row.movie_poster}"/>
-				<div class="movie_name"><a href="#">${row.movie_name}</a>(${row.age_limit})</div>
+				<div class="movie_name"><a href="/movieDetail/${row.movie_id}">${row.movie_name}</a>(${row.age_limit})</div>
 			</li>
 			</c:forEach>
 		</ul>

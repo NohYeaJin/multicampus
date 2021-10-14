@@ -22,7 +22,7 @@ public class MemberController {
 	@PostMapping("/register.do")
 	public String register(UserVO user) {		
 		memberservice.MemberRegister(user);
-		System.out.println(user.getUser_name());
+		//System.out.println(user.getUser_name());
 		return "redirect:/login";
 	}
 	

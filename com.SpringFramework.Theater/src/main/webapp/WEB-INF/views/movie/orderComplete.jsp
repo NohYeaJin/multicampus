@@ -40,6 +40,7 @@
                  <input type="hidden" name="movie_name" value="${info.movie_name}"/>
                   <input type="hidden" name="printTime" value="${info.printTime}"/>
                   <input type="hidden" name="time_id" value="${info.time_id}"/>
+                  <input type="hidden" name="movie_start_time" value="${info.movie_start_time}"/>
                 <input type="submit" id="confirm2" value="결제하기"/>
             </div>
         </form>

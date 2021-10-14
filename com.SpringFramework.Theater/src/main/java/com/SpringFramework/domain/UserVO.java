@@ -5,7 +5,9 @@ public class UserVO {
 	private String user_pw;
 	private String email;
 	private String user_name;
-	private String phonenum;
+	private String phonenum1;
+	private String phonenum2;
+	private String phonenum3;
 	
 	public String getUser_id() {
 		return user_id;
@@ -33,11 +35,24 @@ public class UserVO {
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
 	}
-	public String getPhonenum() {
-		return phonenum;
+	public String getPhonenum1() {
+		return phonenum1;
 	}
-	public void setPhonenum(String phonenum) {
-		this.phonenum = phonenum;
+	public void setPhonenum1(String phonenum1) {
+		this.phonenum1 = phonenum1;
 	}
+	public String getPhonenum2() {
+		return phonenum2;
+	}
+	public void setPhonenum2(String phonenum2) {
+		this.phonenum2 = phonenum2;
+	}
+	public String getPhonenum3() {
+		return phonenum3;
+	}
+	public void setPhonenum3(String phonenum3) {
+		this.phonenum3 = phonenum3;
+	}
+
 	
 }
