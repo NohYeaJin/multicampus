@@ -28,7 +28,7 @@ public class KakaopayService {
     
     public String kakaoPayReady(KakaopayPurchaseVO purhcaseVO) {
         RestTemplate restTemplate = new RestTemplate();
- 
+        //github test
         // 서버로 요청할 Header
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "KakaoAK " + "39fed8855b6fb76878862f2d42d39f24");
