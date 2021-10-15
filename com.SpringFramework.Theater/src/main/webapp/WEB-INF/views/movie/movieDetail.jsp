@@ -74,7 +74,7 @@
 				tbody.append("<tr><td>등록된 댓글이 없습니다.</td></tr>");
 			} else {
 	                $(result).each(function(){
-	                	tbody.append("<tr><td>"+this.user_id+": "+this.content_text+" ("+this.printTime+")</td></tr>");
+	                	tbody.append("<tr><td>"+this.user_id+": "+this.content_text+" ("+this.printTime+")<input type='button' id='cmt' value='수정'/><input type='button' id='cmt' value='삭제'/></td></tr>");
 	                });	//each end
 			}
             }	   // Ajax success end

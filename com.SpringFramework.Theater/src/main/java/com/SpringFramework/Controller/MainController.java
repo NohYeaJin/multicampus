@@ -74,6 +74,9 @@ public class MainController {
 	@RequestMapping("/mypage")
 	public String toMyPage(HttpSession session, Model model) {
 		String user_id = (String) session.getAttribute("member");
+		if(user_id==null) {
+			return "redirect:/login";
+		}
 		System.out.println(user_id);
 		// mypage data for updating member info
 		UserVO userinfo = memberservice.getMemberInfo(user_id);
@@ -101,7 +104,11 @@ public class MainController {
 	}
 
 	@RequestMapping("/fastReserve")
-	public String tofastReserve(Model model) {
+	public String tofastReserve(Model model,HttpSession session) {
+		String user_id = (String)session.getAttribute("member");
+		if(user_id==null) {
+			return "redirect:/login";
+		}
 		model.addAttribute("movies", movieservice.findAllMovie());
 		model.addAttribute("theaters", movieservice.findAllTheater());
 

@@ -734,3 +734,10 @@ table#commentList{
 table#commentList tr td{
 	border-bottom: 2px solid rgb(246, 181, 105);
 }
+
+input#cmt{
+	border-radius: 5px;
+	background-color: rgb(246, 181, 105);
+	margin-left:3px;
+	color:white;
+}

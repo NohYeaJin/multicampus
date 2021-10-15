@@ -122,12 +122,18 @@ public class MovieController {
 	@ResponseBody
 	@PostMapping("/insertReply")
 	public Map<String, Object> saveReply(int movie_id,String content_text,HttpSession session) throws Exception {
+		String user_id = (String)session.getAttribute("member");
+		Map<String, Object> result = new HashMap<String, Object>();
+		if(user_id==null) {
+			result.put("status", "needlogin");
+			return result;
+		}
+		
 		ReplyVO replyVO = new ReplyVO();
 		replyVO.setContent_text(content_text);
-		replyVO.setMovie_id(movie_id);
-		String user_id = (String)session.getAttribute("member");		
+		replyVO.setMovie_id(movie_id);		
 		replyVO.setUser_id(user_id);
-		Map<String, Object> result = new HashMap<String, Object>();
+		
 		try {
 			replyservice.insertReply(replyVO);
 			result.put("status", "OK");
