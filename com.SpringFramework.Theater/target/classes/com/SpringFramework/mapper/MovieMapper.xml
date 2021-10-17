@@ -42,6 +42,14 @@ PUBLIC "=//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="left_seat_num" property="left_seat_num"></result>
 	</resultMap>
 	
+	<resultMap id="AdminTimeMap" type="com.SpringFramework.domain.TimeVO">
+		<result column="movie_name" property="movie_name"></result>
+		<result column="theater_name" property="theater_name"></result>
+		<result column="theater_room_name" property="theater_room_name"></result>
+		<result column="start_time" property="start_time"></result>
+		<result column="left_seat_num" property="left_seat_num"></result>
+	</resultMap>
+	
 	<resultMap id="OrderMap" type="com.SpringFramework.domain.OrderVO">
 		<result column="time_id" property="time_id"></result>
 		<result column="movie_name" property="movie_name"></result>
@@ -55,7 +63,9 @@ private String movie_name;
 	private String theater_room_name;
 	private Timestamp movie_start_time;
  -->
- 
+ 	<select id="findAllTime" resultMap = "AdminTimeMap">
+ 		SELECT a.start_time, a.left_seat_num, b.theater_name, b.theater_room_name, c.movie_name from theater_rooms_time a,  
+ 	</select>
 	<select id="getOrderData" resultMap = "OrderMap">
 		SELECT * FROM theater_rooms_time a, theater_rooms b, movie_info c, theater d WHERE a.room_id = b.theater_rooms_id AND c.movie_id = a.movie_id AND a.time_id = #{time_id} LIMIT 1
 	</select>

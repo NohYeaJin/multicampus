@@ -9,8 +9,11 @@ import com.SpringFramework.domain.OrderVO;
 import com.SpringFramework.domain.SeatVO;
 import com.SpringFramework.domain.TheaterRoomTimeVO;
 import com.SpringFramework.domain.TheaterVO;
+import com.SpringFramework.domain.TimeVO;
+import com.SpringFramework.domain.UserVO;
 
 public interface MovieService {
+	public List<TimeVO> findAllTime();
 	public List<MovieVO> findAllMovie();
 	public List<TheaterVO> findAllTheater();
 	public MovieVO getMovieInfo(int movie_id);
@@ -23,4 +26,5 @@ public interface MovieService {
 	public List<SeatVO> getTakenSeats(int time_id);
 	public int getTheaterSeatType(int time_id);
 	public OrderVO getOrderData(int time_id);
+	
 }

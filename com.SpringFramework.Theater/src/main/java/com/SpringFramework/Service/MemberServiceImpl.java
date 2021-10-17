@@ -1,5 +1,7 @@
 package com.SpringFramework.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,12 @@ public class MemberServiceImpl implements MemberService {
 		//if result is 1, login is success
 		//if result is 0, login is fail
 	}
-
+	
+	@Override
+	public List<UserVO> getMemberInfos(){
+		return mapper.getMemberInfos();
+	}
+	
 	@Override
 	public void MemberRegister(UserVO userinfo) {
 		mapper.MemberRegister(userinfo);

@@ -1,11 +1,16 @@
 package com.SpringFramework.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.SpringFramework.domain.UserReserveVO;
 import com.SpringFramework.domain.UserVO;
 
 public interface MemberMapper {
+	
+		//get all member info for admin
+		public List<UserVO> getMemberInfos();
 		//login
 		public int MemberLogin(@Param("user_id") String user_id,@Param("user_pw") String user_pw);
 		

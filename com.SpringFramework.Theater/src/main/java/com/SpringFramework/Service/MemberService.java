@@ -1,5 +1,7 @@
 package com.SpringFramework.Service;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.SpringFramework.domain.UserReserveVO;
@@ -27,5 +29,7 @@ public interface MemberService {
 	
 	//delete member info 
 	public UserVO deleteInfo(String user_id);
+	
+	public List<UserVO> getMemberInfos();
 	
 }

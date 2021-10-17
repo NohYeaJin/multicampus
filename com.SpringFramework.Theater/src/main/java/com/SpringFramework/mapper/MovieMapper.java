@@ -9,8 +9,10 @@ import com.SpringFramework.domain.OrderVO;
 import com.SpringFramework.domain.SeatVO;
 import com.SpringFramework.domain.TheaterRoomTimeVO;
 import com.SpringFramework.domain.TheaterVO;
+import com.SpringFramework.domain.TimeVO;
 
 public interface MovieMapper {
+	public List<TimeVO> findAllTime();
 	public List<MovieVO> findAllMovie();
 	public List<TheaterVO> findAllTheater();
 	public MovieVO getMovieInfo(int movie_id);

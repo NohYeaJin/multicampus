@@ -11,6 +11,8 @@ import com.SpringFramework.domain.OrderVO;
 import com.SpringFramework.domain.SeatVO;
 import com.SpringFramework.domain.TheaterRoomTimeVO;
 import com.SpringFramework.domain.TheaterVO;
+import com.SpringFramework.domain.TimeVO;
+import com.SpringFramework.domain.UserVO;
 import com.SpringFramework.mapper.MemberMapper;
 import com.SpringFramework.mapper.MovieMapper;
 
@@ -19,6 +21,7 @@ public class MovieServiceImpl implements MovieService{
 
 	@Autowired
 	private MovieMapper mapper;
+
 	
 	@Override
 	public MovieVO getMovieInfo(int movie_id) {
@@ -80,6 +83,11 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public OrderVO getOrderData(int time_id) {
 		return mapper.getOrderData(time_id);
+	}
+
+	@Override
+	public List<TimeVO> findAllTime() {
+		return mapper.findAllTime();
 	}
 
 }
