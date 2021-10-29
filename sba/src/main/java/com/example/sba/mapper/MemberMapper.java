@@ -20,4 +20,6 @@ public interface MemberMapper {
 	public Member getMember(@Param("email") String email)throws Exception;
 	
 	public void createMember(Map<String,String> map)throws Exception;
+	
+	public int loginMember(@Param("email") String email)throws Exception;
 }

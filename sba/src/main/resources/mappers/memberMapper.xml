@@ -9,7 +9,11 @@
     </select>
     <select id="getMember" resultType="com.example.sba.domain.Member" >
 		select * from MEMBERS3 where EMAIL = #{email}
-    </select>    
+    </select>  
+    
+    <select id="loginMember" resultType="int" >
+		select count(*) from MEMBERS3 where EMAIL = #{email}
+    </select>   
     
     <insert id="createMember" parameterType="java.util.HashMap">
     	INSERT INTO MEMBERS3(EMAIL,PWD,MNAME,CRE_DATE,MOD_DATE) 

@@ -21,6 +21,7 @@ public class HelloController {
 	public String hello(HttpServletRequest request) {
 		return "main.html";
 	}
+	
 
 	@RequestMapping("/helloJson")
 	public String helloJson() {

@@ -14,17 +14,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.sba.domain.Member;
 import com.example.sba.mapper.MemberMapper;
-
+import ai.Main;
 @RestController
 public class MapperExController {
 
 	@Autowired
 	private MemberMapper mapper;
-
+	private Main main;
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	// @RequestMapping(value = "/noXmlMapperGet/{id}",method = RequestMethod.GET)
@@ -104,6 +106,24 @@ public class MapperExController {
 			e.printStackTrace();
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST.OK);
 		}
+	}
+	
+	@RequestMapping("/success")
+	public String success(HttpServletRequest request) {
+		return "success.html";
+	}
+	
+	@PostMapping("/login")
+	public String login() {
+		ModelAndView mav = new ModelAndView("success");
+		try {
+			if(mapper.loginMember(Main.loginAudio())==1) {
+				return "success";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "fail";
 	}
 	
 	@PostMapping("/useXmlMapperPost")
