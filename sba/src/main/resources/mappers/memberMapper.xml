@@ -13,6 +13,10 @@
     
     <select id="loginMember" resultType="int" >
 		select count(*) from MEMBERS3 where EMAIL = #{email}
+    </select>  
+    
+    <select id="loginMember2" resultType="int" >
+		select count(*) from MEMBERS3 where EMAIL = #{email} AND pwd = #{pwd}
     </select>   
     
     <insert id="createMember" parameterType="java.util.HashMap">

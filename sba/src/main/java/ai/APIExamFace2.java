@@ -16,7 +16,7 @@ public class APIExamFace2 {
 
         try {
             String paramName = "image"; // 파라미터명은 image로 지정
-            String imgFile = "C:\\work2\\sba\\iu.jpg";
+            String imgFile = "C:\\work2\\sba\\myphoto.jpg";
             File uploadFile = new File(imgFile);
             String apiURL = "https://naveropenapi.apigw.ntruss.com/vision/v1/face"; // 얼굴 감지
             URL url = new URL(apiURL);

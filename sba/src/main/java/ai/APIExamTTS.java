@@ -9,8 +9,8 @@ import java.util.Date;
 public class APIExamTTS {
 
  public static void main(String[] args) {
-     String clientId = "350g9h5l97";//애플리케이션 클라이언트 아이디값";
-     String clientSecret = "ydUKHscn0PlX4rY3m0pZnMlx1vHqHiGq1DQJUZeG";//애플리케이션 클라이언트 시크릿값";
+     String clientId = "rhlar1oiwe";//애플리케이션 클라이언트 아이디값";
+     String clientSecret = "6WBUM2qu9o4qceTPETjJBVrum5DIgjmTQygc7Zm4";//애플리케이션 클라이언트 시크릿값";
      try {
          String text = URLEncoder.encode("만나서 반갑습니다.", "UTF-8"); // 13자
          String apiURL = "https://naveropenapi.apigw.ntruss.com/voice/v1/tts";
